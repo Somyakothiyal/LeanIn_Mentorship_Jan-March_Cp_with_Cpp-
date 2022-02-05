@@ -1,1 +1,16 @@
-
+class Solution {
+public:
+    int myAtoi(string s) {
+        long a=0,b=1;
+        int i=0;
+        while(s[i] && s[i]==' ') i++;
+        if(s[i]=='-' || s[i]=='+') b=(s[i]=='-'?-1:1),i++;
+        while(s[i]<='9' && s[i]>='0'){
+            a=a*10+(s[i]-'0');
+            i++;
+            if(a*b>+INT_MAX){a=INT_MAX; break;}
+            if(a*b<=(INT_MIN)){a=INT_MIN; break;}
+        }
+        return a*b;
+    }
+};
